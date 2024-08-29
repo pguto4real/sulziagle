@@ -23,7 +23,7 @@ const Results = () => {
         getResults("imagesearch", searchTerm);
       } else if (location.pathname === "/news") {
         getResults("", searchTerm);
-      } else {
+      }  else if (location.pathname === "/search") {
         getResults("websearch", searchTerm);
       }
     }
@@ -39,7 +39,7 @@ const Results = () => {
             <div key={index} className="md:w-2/5 w-full">
               <Link to={href} target="_blank">
                 <p className="text-sm ">
-                  {href.lenght > 30 ? href.substring(0, 30) : href}
+                  {href?.lenght > 30 ? href.substring(0, 30) : href}
                 </p>
                 <p
                   className="text-lg hover:underline dark:text-blue-300
