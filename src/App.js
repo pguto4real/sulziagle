@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Redirect, Navigate } from "react-router-dom";
+
+
+import { useState } from "react";
+import Footer from "./component/Footer";
+import Navbar from "./component/Navbar";
+import Results from "./component/Results";
+
 
 function App() {
+  const [darkTheme, setDarkTheme] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <div className={darkTheme ? 'dark' : ''}>
+        <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen ">
+          <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
+          <Routes >
+            <Route path="/" exact element={<Navigate to='/search'></Navigate>} />
+            <Route exact path='/search' element={<Results />} />
+            <Route exact path='/images' element={<Results />} />
+            <Route exact path='/news' element={<Results />} />
+            <Route exact path='/videos' element={<Results />} />
+
+          </Routes>
+          <Footer />
+        </div>
+      </div>
+
+    </Router>
   );
 }
 

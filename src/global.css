@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link.active{
+    @apply text-blue-700 border-b-2 dark:text-blue-300 border-blue-700 pb-2
+}
